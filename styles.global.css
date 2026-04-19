@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  background-color: #f1f2ed;
+}
+#__next {
+  height: 100vh;
+}
+.wrapper-class {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.editor-class {
+  background-color: lightgray;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.toolbar-class {
+  border: 1px solid #ccc;
+}

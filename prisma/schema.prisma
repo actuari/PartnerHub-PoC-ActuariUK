@@ -1,0 +1,215 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Offer {
+  id                        Int                        @id @default(autoincrement())
+  title                     String
+  body                      String                     @db.Text
+  employer                  Company                    @relation(fields: [employerId], references: [id])
+  employerId                Int
+  targetMajor               Major                      @relation(fields: [targetMajorId], references: [id])
+  targetMajorId             Int
+  singleApplicationsDetails SingleApplicationDetails[]
+  teamApplicationsDetails   TeamApplicationDetails[]
+  usersThatSaved            User[]                     @relation("savedOffers")
+  targetDegree              Degree                     @relation(fields: [targetDegreeId], references: [id])
+  targetDegreeId            Int
+  publishedAt               String
+  due                       String
+  finishDate                String
+}
+
+model OfferDraft {
+  id         Int     @id @default(autoincrement())
+  name       String
+  title      String
+  body       String  @db.Text
+  employer   Company @relation(fields: [employerId], references: [id])
+  employerId Int
+}
+
+model Company {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  description String       @db.Text
+  offers      Offer[]
+  link        String
+  members     Employer[]
+  chatRooms   ChatRoom[]
+  drafts      OfferDraft[]
+}
+
+model Degree {
+  id       Int     @id @default(autoincrement())
+  name     String  @unique
+  students User[]
+  offers   Offer[]
+}
+
+model MajorCategory {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  majors Major[]
+}
+
+model Major {
+  id         Int           @id @default(autoincrement())
+  name       String        @unique
+  category   MajorCategory @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  users      User[]
+  offers     Offer[]
+}
+
+model University {
+  id       Int    @id @default(autoincrement())
+  webpage  String
+  country  String
+  domain   String
+  name     String @unique
+  students User[]
+}
+
+model User {
+  id                  Int                        @id @default(autoincrement())
+  email               String                     @unique
+  name                String
+  surname             String
+  university          University                 @relation(fields: [universityId], references: [id])
+  universityId        Int
+  degree              Degree                     @relation(fields: [degreeId], references: [id])
+  degreeId            Int
+  bio                 String                     @db.Text
+  major               Major                      @relation(fields: [majorId], references: [id])
+  majorId             Int
+  year                Int
+  chosenOffersDetails SingleApplicationDetails[]
+  savedOffers         Offer[]                    @relation("savedOffers")
+  chatRooms           ChatRoom[]
+  team                Team?                      @relation(name: "Member", fields: [teamId], references: [ownerEmail])
+  teamId              String?
+  ownedTeam           Team?                      @relation("Owner")
+}
+
+model Employer {
+  id                      Int     @id @default(autoincrement())
+  email                   String  @unique
+  name                    String
+  surname                 String
+  company                 Company @relation(fields: [companyId], references: [id])
+  companyId               Int
+  canAddOffers            Boolean @default(false)
+  canManageCandidates     Boolean @default(false)
+  canManagePermissions    Boolean @default(false)
+  canUpdateCompanyDetails Boolean @default(false)
+}
+
+model SingleApplicationDetails {
+  user       User    @relation(fields: [userEmail], references: [email])
+  userEmail  String
+  offer      Offer   @relation(fields: [offerId], references: [id])
+  offerId    Int
+  isAccepted Boolean @default(false)
+  isRejected Boolean @default(false)
+
+  @@id([userEmail, offerId])
+}
+
+model TeamApplicationDetails {
+  team           Team    @relation(fields: [teamOwnerEmail], references: [ownerEmail])
+  teamOwnerEmail String
+  offer          Offer   @relation(fields: [offerId], references: [id])
+  offerId        Int
+  isAccepted     Boolean @default(false)
+  isRejected     Boolean @default(false)
+
+  @@id([teamOwnerEmail, offerId])
+}
+
+model Message {
+  id                  Int      @id @default(autoincrement())
+  chatRoom            ChatRoom @relation(fields: [chatRoomUserEmail, chatRoomCompanyName], references: [userEmail, companyName])
+  chatRoomUserEmail   String
+  chatRoomCompanyName String
+  date                String
+  content             String   @db.Text
+  isFromCompany       Boolean
+}
+
+model ChatRoom {
+  user          User      @relation(fields: [userEmail], references: [email])
+  userEmail     String
+  company       Company   @relation(fields: [companyName], references: [name])
+  companyName   String
+  messages      Message[]
+  seenByCompany Boolean   @default(false)
+  seenByUser    Boolean   @default(false)
+
+  @@id([userEmail, companyName])
+}
+
+model Team {
+  owner               User                     @relation(name: "Owner", fields: [ownerEmail], references: [email])
+  ownerEmail          String                   @id
+  members             User[]                   @relation("Member")
+  chosenOffersDetails TeamApplicationDetails[]
+  name                String
+  description         String                   @db.Text
+}
+
+model AuthUser {
+  id            String        @id @default(cuid())
+  name          String?
+  email         String?       @unique
+  passwordHash  String?       @db.Text
+  emailVerified DateTime?
+  image         String?
+  accounts      AuthAccount[]
+  sessions      AuthSession[]
+
+  @@map("auth_users")
+}
+
+model AuthAccount {
+  id                String   @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  user              AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("auth_accounts")
+}
+
+model AuthSession {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("auth_sessions")
+}
+
+model AuthVerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("auth_verification_tokens")
+}

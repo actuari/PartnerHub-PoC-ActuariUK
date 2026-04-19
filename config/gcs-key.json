@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "portal-488421",
+  "private_key_id": "6cd44081fab3b1f636f6a934914e111c64a73acd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCybUd5JlAaGYz/\ng2ehXH+Y9NxKJKiiJSXXnmIklJtxFSRczk8UVxxb/KsGxJr9GrUedkRh/nDwvQ/X\nI5UoYeZW307YMvzfPhvPc6n3ez/ifHdyAd72+aBpywYAvquRe3F69FpwNOnSh+Zy\npLiRI8rJem5ySuenbk/SQRPVA027u87WQkpE7F/GXyYLAAUoH8BIhJMpaXD0Z4uF\n23d7gsQrXHbU32vWfkLUsq55Jv/B2A4yV5SNDoNAC/ItzYhCi5CkldAYFjvJpWl4\n8D32DXB0mxYdLLcpbbCHdh8PTLHuLoRnibjpaWVXtwXelKcCKnu9vtd/S/i4kt6T\n4h4K3majAgMBAAECggEAUp/5S5ha2qM/YGls+VO4wM+PHYR5VNDIA9/TyeXJT6X/\nNzzQcPZf6xcH6fPsY83U1pzk0M4/ZbPfXHydS1x+incRb1u5LvX3ces5Z6G69To3\nI+PK6OqzBpqeFoU1NQMJi2sRYEmYh8YoCKnP0GJXO1LHR4T5XlbeftplASzs98Rb\n+RQ0IFmZKUyeCELCZTThMZ1D4HxAnPJtuLUft8jMHE8B1UtxlhT4nR3v5BToyDKq\nhOcDQb1MxxvHWASV/ZZ43pII7BXBXQxqgcwE50LjZmZ7tst/Kp2CZyZ16aCw348C\n08T0SLIEP3W7s1sx5bs38VxwQ7khDEda8u086rVpCQKBgQDgT4r14LuSxROMEwVS\nWzRzys36t0WW/Hv19TXf6wLgy0ACdGZLGnpkZm0rT8VkH7LtLuAr/acGMQb9i+5z\nuyRnS+nOu0dj9XmOwMbJ17d3O0UpsYB+Q6N8jtACyA7J8LotjItRGv63rX0sbzYa\nZ1lRncu4D28/ETpooVgfnWbkKQKBgQDLoktDQ1DyotAa8AoHQnab/Fyh9GBdok9C\nUMNZLWwP0gM5KZPsei5Vv3g/JKJFLKdff22BBlZ/5MqjZKtb21FtnyZl4rAieHfk\n8PPhCIUDCTrYWKqIAwImeBupIG4QRnAhiZlJT7ClU6mjK3LmzfN8iql5BwHwjTsE\n+6+C6Mnt6wKBgQCUenKcYR8ofwV6YhjStAabYzJHdEs/L3AKlj8MMm8cR83eEhio\nPCWqEdbPpaUeqpDwyWegFu4ZfhiHernjp4voSGrC6lrOQu4s3VR4xS7vYK9ect2A\nNtugFpSAUtbfO1ax0ediT4EuKkvCPvdMMP8BtHbmJmlYENpd6fcALluuSQKBgQCH\nzf25pxxGJRT60hkuDEJD90Lj87GM4KFRTcFqKOPHjTz/E16GuFlMcHxGSC08SvJ4\nuugRw2NOugv2ej3Z7eNZY2ldS5hB9OuosJVE/8SNaMto24EnYjI9654u5eThT8ia\nZUToYpAhQjGBE4n2qWV4KpWplGXTwqyYvy2m9Y8t7wKBgQDcD6qUyWiUpZI/52Un\nNBOHQVvtFYvcHiBDaHyTA1rmbmV9BezBa87e9rv9uTdKT1Ytdckhx5TpdFT1XW6p\nQB3fcxNyvf631HFLaMRMnUDqKRooxz4YMobowOk+Te1l03jG/O29wa8nkZ8zFrpr\nJFB7YZPOitExx3Tf2S1qhqlfBw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "portal-storage@portal-488421.iam.gserviceaccount.com",
+  "client_id": "114642291622754183176",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/portal-storage%40portal-488421.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
