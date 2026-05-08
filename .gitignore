@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-prisma/migrations
+config/gcs-key.json
 # testing
 /coverage
 

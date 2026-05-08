@@ -1,12 +1,9 @@
 import { Storage } from "@google-cloud/storage";
 import { createWriteStream } from "./gcs";
-const path = require("path");
+
 const storage = new Storage({
-  keyFilename: path.join(
-    __dirname,
-    "../../../../../../config/gcs-key.json" 
-  ),
-  projectId: "portal-488421", 
+  credentials: JSON.parse(process.env.GCS_KEY_JSON!),
+  projectId: "portal-488421",
 });
 const avatarBucket = storage.bucket("portal_avatars");
 
