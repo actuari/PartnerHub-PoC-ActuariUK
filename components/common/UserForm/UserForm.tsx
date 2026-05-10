@@ -73,10 +73,10 @@ const Update = ({ user,
         email,
         name,
         surname,
-        universityId: university?.id!,
-        degreeId: degree?.id!,
-        majorId: major?.id!,
-        year: Number.parseInt(year),
+        universityId: university?.id ?? 1,
+        degreeId: degree?.id ?? 1,
+        majorId: major?.id ?? 1,
+        year: Number.parseInt(year) || 1,
         bio: JSON.stringify(bioState)
     }
     return <Card>
