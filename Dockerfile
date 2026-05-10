@@ -24,6 +24,7 @@ ENV NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
 ARG DATABASE_URL
 ENV DATABASE_URL=$DATABASE_URL
 
+RUN npx prisma migrate deploy
 RUN npm run build --production
 
 FROM node:20-alpine3.16 AS runner
