@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Input, IconButton, CircularProgress, Card, CardContent, Autocomplete } from "@mui/material";
+import { TextField, Button, Grid, Input, IconButton, CircularProgress, Card, CardContent } from "@mui/material";
 import { University, Degree, Major } from "@prisma/client";
 import { getCvSrc } from "../../../hooks";
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
@@ -83,6 +83,7 @@ const Update = ({ user,
         <CardContent>
             <Grid container spacing={3} justifyContent="space-around">
                 <BasicInformation email={email} name={name} setName={setName} setSurname={setSurname} surname={surname} />
+                {/*
                 <Grid item xs={12} md={8}>
                     <Autocomplete
                         value={university}
@@ -100,6 +101,8 @@ const Update = ({ user,
                         )}
                     />
                 </Grid>
+                */}
+                {/*
                 <Grid item xs={12} md={8}>
                     <Autocomplete
                         value={degree}
@@ -117,6 +120,8 @@ const Update = ({ user,
                         )}
                     />
                 </Grid>
+                */}
+                {/*
                 <Grid item xs={12} md={8}>
                     <Autocomplete
                         value={major}
@@ -134,8 +139,10 @@ const Update = ({ user,
                         )}
                     />
                 </Grid>
+                */}
                 <Grid item xs={12} md={8}>
                     <Grid container justifyContent="space-between">
+                        {/*
                         <Grid item xs={6}>
                             <TextField
                                 label="Year"
@@ -145,6 +152,7 @@ const Update = ({ user,
                                 onChange={(event) => setYear(event.target.value)}
                             />
                         </Grid>
+                        */}
                         <Grid item xs={12} textAlign="right">
                             <Input
                                 sx={{ display: 'none' }}
@@ -172,7 +180,7 @@ const Update = ({ user,
                             <Button onClick={cancelAction}>Cancel</Button>
                         </Grid>
                         <Grid item xs={6} textAlign="right">
-                            <Button disabled={!degree || !university || !major || !year} onClick={() => action(newUser)}>{actionString}</Button>
+                            <Button disabled={false} onClick={() => action(newUser)}>{actionString}</Button>
                         </Grid>
                     </Grid>
                 </Grid>
