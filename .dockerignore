@@ -6,4 +6,10 @@ npm-debug.log
 README.md
 .next
 .git
+.env
 .env.local
+config/gcs-key.json
+backup.sql
+backup_zpp.sql
+backup
+.cursor

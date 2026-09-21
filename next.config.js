@@ -1,4 +1,4 @@
-const dotenv = require("dotenv").config().parsed;
+const dotenv = require("dotenv").config().parsed || {};
 const webpack = require("webpack");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -14,7 +14,9 @@ const nextConfig = {
       tls: false,
       requst: false,
     };
-    config.plugins.push(new webpack.EnvironmentPlugin(dotenv));
+    if (Object.keys(dotenv).length > 0) {
+      config.plugins.push(new webpack.EnvironmentPlugin(dotenv));
+    }
     return config;
   },
   images: {

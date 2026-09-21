@@ -17,8 +17,7 @@ function UserSummary({ user }: UserSummaryProps) {
                     <Avatar src={getImageSrc(user.email)} />
                 </IconButton>
             </ListItemAvatar>
-            <ListItemText primary={`${user.name} ${user.surname}`}
-                secondary={<ListItemText primary={`${user.degree.name}`} secondary={`${user.university.name}`} />} />
+            <ListItemText primary={`${user.name} ${user.surname}`} />
             <ListItemIcon>
                 <IconButton download href={getCvSrc(user.email)} target="_blank">
                     <SimCardDownload />
